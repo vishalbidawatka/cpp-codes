@@ -43,9 +43,10 @@ struct node{
  {
     if(root==NULL)
         return;
-    cout<<root->data;
+    
     postorder(root->left);
     postorder(root->right);
+    cout<<root->data;
 
  }
 
