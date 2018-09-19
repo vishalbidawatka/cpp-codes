@@ -1,0 +1,23 @@
+Graphs---
+
+ 1. Depth First Search
+ 2. Breadth First Search
+ 3. KosaRaju
+ 4. Prims's
+ 5. Kruskal's
+ 6. Disjoint Set Union
+ 7. Path Compression
+ 8. Targen Algorithm
+
+ Trees--
+ 1. Inorder Traversal
+ 2. Preorder Traversal
+ 3. Postorder Traversal
+
+
+ 1. Matrix Exponential
+ 2. Fermatt's Theorem
+ 3. N-Queen's Problelm
+ 4. Fibonacci Search
+ 5. Trie
+ 6. 
