@@ -36,17 +36,12 @@ public:
       b.push_front(n);
 
     }
-
-    
-
-
-
   }
 
   void topo_sort()
   {
-    vector<int> a(V);
-    list<int> b;
+    vector<int> a(V); //to store the visited
+    list<int> b; //to store the final output
     for(int i=0;i<V;i++)
     {
       topo_helper(i,a,b);
