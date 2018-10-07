@@ -2,6 +2,10 @@
 using namespace std;
 
 
+//Given fence we need to find the possible ways to paint it with k colors such that atmost two 
+//adjacent fence have the same color
+
+
 int count_color(int n,int k)
 {
 	int total[n+1],diff[n+1];
