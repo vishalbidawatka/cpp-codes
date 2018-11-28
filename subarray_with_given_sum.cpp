@@ -2,6 +2,9 @@
 #include <vector>
 using namespace std;
 
+//Time Complexity - O(n)
+//Space Complexity - O(1)
+
 int main() {
 
     int t;
@@ -25,14 +28,12 @@ int main() {
             if(result == s)
             {
                 cout<<j+1<<" "<<i+1<<"\n";
-                break;
+                break;  //stops taking input once the sum is matched
             }
         }
         if(i==n)
             cout<<"-1\n";
-        
     }
-
 
 	return 0;
 }
