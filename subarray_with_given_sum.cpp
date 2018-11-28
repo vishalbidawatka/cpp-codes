@@ -20,7 +20,7 @@ int main() {
         {
             cin>>arr[i];
             result+=arr[i];
-            if(result > s)
+            while(result > s && j<=i)//keep removing element until result greater than sum
             {
                 result-=arr[j];
                 j++;
