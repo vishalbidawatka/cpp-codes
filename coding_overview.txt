@@ -159,7 +159,7 @@
     return res;
 }
 -----------------------------------------------------------------------------------------
-PYTHOGOREAN TRIPLET
+PYTHOGOREAN TRIPLET- a2 + b2 = c2
 
 bool find_triplet(vector<int> &arr)
 {
@@ -184,3 +184,89 @@ bool find_triplet(vector<int> &arr)
     
     return 0;
 }
+-------------------------------------------------------------------------------
+
+BUY SELL
+
+/*
+The cost of stock on each day is given in an array A. 
+Find all the days on which you buy and sell the stock 
+so that in between those days you shouldn't have any loss
+i/p-100 180 260 310 40 535 695
+o/p- (0 3) (4 6)
+*/
+
+void buy_sell(vector<int> &arr)
+{
+    int max;
+    int i=arr.size()-1;
+    vector< pair<int,int> > result;
+    while(i>0 && arr[i-1]>arr[i])
+        i--;
+    max = i;
+    i--;
+    while(i>=0)
+    {
+        if(arr[i]>arr[max])
+        {
+            pair<int,int> foo = make_pair(i+1,max);
+            result.push_back(foo);
+            max = i;
+        }
+        i--;
+    }
+    pair<int,int> foo = make_pair(i+1,max);
+    result.push_back(foo);
+    
+    for(i=result.size()-1;i>=0;i--)
+    {
+        cout<<"("<<result[i].first<<","<<result[i].second<<") ";
+    }
+    cout<<"\n";
+}
+---------------------------------------------------------------------------------------
+
+PASCAL TRIANGLE
+
+vector<int> arr; //used to store final output
+    vector<int> clone; //used for swapping
+    clone.push_back(1);
+    arr.push_back(1);
+    cin>>n;
+    for(i=2;i<=n;i++)
+    {
+        clone.swap(arr);
+        arr.resize(i);
+        arr[0]=arr[i-1]=1;
+        for(j=1;j<(i-1);j++)
+            arr[j]=clone[j-1]+clone[j];
+    }
+    return arr;
+ -------------------------------------------------------------------------
+
+ ROTATE ARRAY BY K
+
+i/p- 1 2 3 4 5 6 7
+o/p- 5 6 7 1 2 3 4
+  void reverse(vector<int>& nums,int start,int end)
+    {
+        int temp;
+        while(start<end)
+        {
+            temp = nums[start];
+            nums[start] = nums[end];
+            nums[end] =temp;
+            start++;
+            end--;
+        }
+    }
+    void rotate(vector<int>& nums, int k) {
+        
+        k = k%nums.size();
+        reverse(nums,0,nums.size()-1);
+        reverse(nums,0,k-1);
+        reverse(nums,k,nums.size()-1);
+        
+       
+    }
+    -------------------------------------------------------------
