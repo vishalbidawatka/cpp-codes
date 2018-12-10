@@ -14,7 +14,6 @@ void buy_sell(vector<int> &arr)
 {
     int max;
     int i=arr.size()-1;
-    vector< pair<int,int> > result;
     while(i>0 && arr[i-1]>arr[i])
         i--;
     max = i;
