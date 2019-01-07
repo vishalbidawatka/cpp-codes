@@ -1,0 +1,57 @@
+-------Bashrc-----
+
+ Many Debian based Linux distributions such as Debian itself, Ubuntu and Linux Mint use DASH   as a shell instead of BASH. DASH stands for Debian Almquist Shell. The DASH shell is very similar to BASH but it is a lot smaller than the BASH shell.
+
+ Regardless as to whether you are using BASH or DASH you will have a file called .bashrc. In fact you will have multiple .bashrc files.
+
+
+
+sudo find / -name .bashrc
+
+When I run this command there are three results returned:
+
+    /etc/skel/.bashrc
+    /home/gary/.bashrc
+    /root/.bashrc
+
+The /etc/skel/.bashrc file is copied into the home folder of any new users that are created on a system.
+
+The /home/gary/.bashrc is the file used whenever the user gary opens a shell and the root file is used whenever root opens a shell.
+
+
+The .bashrc file is a shell script which is run every time a user opens a new shell.
+
+The .bashrc file is commonly used to set aliases to commonly used commands so that you don't have to remember long commands.
+
+
+Question- What if you delete user's bashrc file ?
+Answer - Then system will use root's bashrc file present in /etc/
+
+=====STANDALONE PROGRAMS======
+	A stand-alone program, also known as a freestanding program, is a computer program that does not load any external module, library function or program , it runs on bare metal.
+	Usually written in or compiled to the assembly language for the specific hardware
+
+Ways to make ubuntu run fast
+
+1. Reduce default boot time from the grub file, bydefault it is 10second
+2. Disable the applications which are not required to be loaded during start up. We may also    
+   change the loading time of the application by putting it over sleep.
+3. Install preload to speed up application run time.It analyses user behavior and frequently run  
+   applications.
+4. Choose the best mirror to update the software
+5. If you are using only english as a language then no need to install various language translator 
+   along with the application(which are shown as ign during update), hence set acquiring languages to none in /etc/apt/apt.conf/00aptitude file.
+6. We can install softwares which run in background to prevent overheating and thus fast loading  
+   of the program.(such as CPUFREQ)
+
+
+
+Initially start up was managed by startup manager but now it is managed by grub customiser using which we can change the order of the os appearing during booting in dual boot machine. By defalut it is ubuntu on the top.
+
+Xubuntu has lighter software packages installed for operations such as word processing etc.
+There are two ways you can use Xfce desktop on Ubuntu. Either you just install the Xfce desktop
+(xfce4 package) or you install the Xubuntu desktop (xubuntu-package).
+If you install the xfce4 package, you just get the Xfce desktop and some basic packages included in the Xfce desktop such as Thunar file manager. The rest of the things remain the same. For example, if you use a terminal, it will still be the GNOME terminal.
+
+ only xfce installation-> only interface changes
+ xubuntu installation-> interface and packages changes(generally packages are lighter)
