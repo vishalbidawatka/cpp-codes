@@ -1003,3 +1003,189 @@ SUBSETS OF A SET
     }
     -----------------------------------------------------------------------------
 
+  Reverse Linked List From m to n
+
+  example- Input: 1->2->3->4->5->NULL, m = 2, n = 4
+           Output: 1->4->3->2->5->NULL
+
+  ListNode* reverseBetween(ListNode* head, int m, int n) {
+    
+        ListNode* newnode = new ListNode(0);
+        newnode->next=head;
+        ListNode* first=newnode;
+        int i=1;
+        while(i<m)
+        {
+            i++;
+            first=first->next;
+        }
+        ListNode* second = first->next;
+        ListNode* third;
+        while(i<n)
+        {
+            i++;
+            third=second->next;
+            second->next=third->next;
+            third->next=first->next;
+            first->next=third;
+        }
+        
+        return newnode->next;
+    
+    }
+  -------------------------------------------------------------------------------
+
+  Anticlockwise Rotation of matrix by 90
+
+  void rotate(vector<vector<int>> &matrix)
+ {
+    int n=matrix.size();
+    int temp;
+    for(int i=0;i<n/2;i++)  // as there will be maximum of n/2 square cycles
+    {
+        for(int j=i;j<n-1-i;j++)
+        {
+            temp = matrix[i][j];
+            matrix[i][j]=matrix[j][n-1-i];
+            matrix[j][n-1-i]=matrix[n-1-i][n-1-j];
+            matrix[n-1-i][n-1-j]=matrix[n-1-j][i];
+            matrix[n-1-j][i]=temp;
+        }
+    }
+ }
+ -----------------------------------------------------------------------------------------
+
+ Anticlockwise Rotation of matrix by 90
+
+
+void rotate(vector<vector<int>> &matrix)
+ {
+    int n=matrix.size();
+    int temp;
+    for(int i=0;i<n/2;i++)
+    {
+        for(int j=i;j<n-1-i;j++)
+        {
+            temp = matrix[i][j];
+            matrix[i][j]=matrix[n-1-j][i];
+            matrix[n-1-j][i]=matrix[n-1-i][n-1-j];
+            matrix[n-1-i][n-1-j]=matrix[j][n-1-i];
+            matrix[j][n-1-i]=temp;
+        }
+    }
+ }
+----------------------------------------------------------------
+
+Question:-
+Determine if a 9x9 Sudoku board is valid. Only the filled cells need to be validated according to the following rules:
+
+    Each row must contain the digits 1-9 without repetition.
+    Each column must contain the digits 1-9 without repetition.
+    Each of the 9 3x3 sub-boxes of the grid must contain the digits 1-9 without repetition.
+
+
+    bool isValidSudoku(vector<vector<char>>& board) {
+        
+        int n=board.size(),k;
+        vector<vector<int>> row(n,vector<int>(n));
+        vector<vector<int>> col(n,vector<int>(n));
+        vector<vector<int>> grid(n,vector<int>(n));
+        int num;
+        
+        for(int i=0;i<n;i++)
+            for(int j=0;j<n;j++)
+            {
+                if(board[i][j]!='.')
+                {
+                    num=board[i][j]-'0'-1;
+                    k = (i/3)*3+j/3;
+                    if(row[i][num] || col[j][num] || grid[k][num])
+                        return false;
+                    else
+                        row[i][num] = col[j][num] = grid[k][num] = 1;
+                }
+            }
+        return true;
+    }
+
+    ---------------------------------------------------------------
+
+    Largest Number that can be formed using elements of given array
+
+
+     string largestNumber(vector<int>& nums) {
+        
+         string res;
+         sort(nums.begin(),nums.end(),[] (int i,int j){
+             return to_string(i)+to_string(j) > to_string(j)+to_string(i); 
+         });
+         for(auto a:nums)
+            res+=to_string(a);
+         return res[0]=='0' ? "0" : res;
+    }
+
+    ---------------------------------------------------------------------
+
+    A message containing letters from A-Z is being encoded to numbers using the following mapping:
+
+    'A' -> 1
+    'B' -> 2
+    ...
+    'Z' -> 26
+
+    Given a non-empty string containing only digits, determine the total number of ways to decode it.
+    
+    int numDecodings(string s) {
+        
+        if(!s.length() || s[0]=='0')
+            return 0;
+        int first=1,second=1;
+         
+        for(int i=1;i<s.length();i++)
+        {
+            if(s[i]=='0')
+                first=0;
+            if(s[i-1]=='1' || s[i-1]=='2' && s[i]<'7')
+            {
+                first+=second;
+                second=first-second;
+            }
+            else
+                second=first;
+        }
+        return first;
+        
+    }
+    -------------------------------------------------------------------
+
+    contiguous subarray of size atleast two that sum upto multiple of k
+
+      bool checkSubarraySum(vector<int>& nums, int k) {
+        
+        k=abs(k);
+        if(!k)
+        {
+            vector<int>::iterator it;
+            if((it=find(nums.begin(),nums.end(),0))!=nums.end() && nums.size()>1)
+                if(*(++it)==0)
+                    return true;
+            return false;
+        }
+        unordered_map<int,int> dp;
+        int sum=0;
+        for(int i=0;i<nums.size();i++)
+        {
+            sum+=nums[i];
+            if(dp.find(sum%k)!=dp.end())
+            {
+                if((i-dp[sum%k])>=1)
+                    return true;
+            }
+            else  if(sum%k==0 && i>0)
+                return true;
+            else
+                dp[sum%k]=i;
+                
+        }
+        return false;
+    }
