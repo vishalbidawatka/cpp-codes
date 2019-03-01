@@ -1189,3 +1189,55 @@ Determine if a 9x9 Sudoku board is valid. Only the filled cells need to be valid
         }
         return false;
     }
+    
+    
+   --------------------------------------------------------------------------
+   Given a 2D binary matrix filled with 0’s and 1’s, find the largest rectangle containing all ones and return its area.
+   int Solution::maximalRectangle(vector<vector<int> > &A) {
+    
+    
+        vector<int> col(A[0].size(),0);
+        stack<int> st;
+        int area = 0;
+        int i,j;
+        for(i=0;i<A.size();i++)
+        {
+            for(j=0;j<A[0].size();j++)
+                col[j] = A[i][j]*col[j]+A[i][j];
+            
+            for(j=0;j<A[0].size();j++)
+            {
+                if(st.empty() || col[st.top()] <= col[j])
+                    st.push(j);
+                else{
+                while(!st.empty() && col[st.top()] > col[j])
+                {
+                    int temp = st.top();
+                    st.pop();
+                    if(st.empty())   
+                        area = max(area,(j)*col[temp]);
+                    else
+                        area = max(area,(j-st.top()-1)*col[temp]);
+                }
+                st.push(j);
+                }
+            }
+            
+            while(!st.empty())
+            {
+            
+                    int temp = st.top();
+                    st.pop();
+                    if(!st.empty())
+                        area = max(area,(j-st.top()-1)*col[temp]);
+                    else
+                        area = max(area,(j)*col[temp]);
+            }
+            
+        }
+        
+        return max(0,area);
+        
+}
+
+   
