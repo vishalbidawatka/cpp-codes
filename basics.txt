@@ -57,4 +57,5 @@ If you install the xfce4 package, you just get the Xfce desktop and some basic p
  xubuntu installation-> interface and packages changes(generally packages are lighter)
  
  https://superuser.com/questions/640839/how-to-enter-login-information-for-a-website-from-the-linux-command-line
+ https://electronics.howstuffworks.com/gadgets/travel/gps3.htm
  
